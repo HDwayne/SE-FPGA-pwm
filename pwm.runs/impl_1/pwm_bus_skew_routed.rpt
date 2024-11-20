@@ -1,0 +1,16 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4081461 Thu Dec 14 12:24:51 MST 2023
+| Date         : Wed Nov 20 20:10:40 2024
+| Host         : LAPTOP-DWAYNE running 64-bit major release  (build 9200)
+| Command      : report_bus_skew -warn_on_violation -file pwm_bus_skew_routed.rpt -pb pwm_bus_skew_routed.pb -rpx pwm_bus_skew_routed.rpx
+| Design       : pwm
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+No bus skew constraints
+

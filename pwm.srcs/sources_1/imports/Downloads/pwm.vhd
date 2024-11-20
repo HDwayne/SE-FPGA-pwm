@@ -1,13 +1,3 @@
---------------------------------------------------------------------------------
--- PWM
---
--- Simple version featuring a uniq output
--- Notes: 
---  DUTY value is only taken account at the beginning of a new cycle
---  [IMPROVEMENT] if duty = max then never set '0' at P
---  Borrowed from Quartus2 sample codes and tailored to suit our needs
---------------------------------------------------------------------------------
-
 -- library definitions
 library ieee;
 
@@ -16,10 +6,8 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
-
 -- Component definition
 entity pwm is
-
 	-- generic parameters
 	generic	(
         sys_clk         : natural := 1E06;  -- system clock frequency in Hz
@@ -49,12 +37,11 @@ architecture behaviour of pwm is
     signal pwm_active : std_logic := '0';
 
 begin
-
-    ------------------------------------------------------------------
-    -- Process P_PWM
     P_PWM: process(CLK)
     begin
         if rising_edge(CLK) then
+            duty_threshold <= conv_integer(DUTY) * FREQ_COUNT_MAX / (2**duty_res - 1);
+            
             if (RST = '0') or (EN = '0') then
                 P <= '0';
                 freq_count <= 0;
@@ -65,9 +52,8 @@ begin
                 else
                     freq_count <= 0;
                 end if;
-
-                duty_threshold <= conv_integer(DUTY) * FREQ_COUNT_MAX / (2**duty_res - 1);
-                if freq_count < duty_threshold then
+                
+                if freq_count <= duty_threshold then
                     pwm_active <= '1';
                 else
                     pwm_active <= '0';
@@ -77,5 +63,4 @@ begin
             end if;
         end if;
     end process P_PWM;
-
 end behaviour;

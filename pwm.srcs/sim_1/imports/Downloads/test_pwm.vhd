@@ -27,7 +27,6 @@ architecture behaviour of test_pwm is
     signal E_CLK, E_EN, E_P : std_logic;
     signal E_DUTY           : std_logic_vector(duty_res - 1 downto 0);
     signal E_RST            : std_logic; -- active low
-
 begin
 
 --------------------------
@@ -40,26 +39,28 @@ begin
     wait for clkpulse;
 end process P_E_CLK;
 
------------------------------------------
--- Simulation Timeout Process
-P_TIMEOUT: process
-begin
-    wait for TIMEOUT;
-    assert FALSE report "SIMULATION TIMEOUT!!!" severity FAILURE;
-end process P_TIMEOUT;
-
---------------------------------------------------
+---------------------
 -- Instantiation of PWM Component
-pwm0 : entity work.pwm(behaviour) -- behavioural simulation
-            generic map (sys_clk => sys_freq,
-                         pwm_freq => pwm_freq,
-                         duty_res => duty_res)
-            port map (CLK => E_CLK,
-                      RST => E_RST,
-                      EN => E_EN,
-                      DUTY => E_DUTY,
-                      P => E_P);
+--pwm0 : entity work.pwm(behaviour) -- behavioural simulation
+--            generic map (sys_clk => sys_freq,
+--                         pwm_freq => pwm_freq,
+--                         duty_res => duty_res)
+--            port map (CLK => E_CLK,
+--                      RST => E_RST,
+--                      EN => E_EN,
+--                      DUTY => E_DUTY,
+--                      P => E_P);
 
+pwm0 : entity work.pwm(structure) -- Post-synthesis netlist
+    port map (
+        CLK  => E_CLK,
+        RST  => E_RST,
+        EN   => E_EN,
+        DUTY => E_DUTY,
+        P    => E_P
+    );
+
+            
 -----------------------------
 -- Test Process
 P_TEST: process

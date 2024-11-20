@@ -1,0 +1,5 @@
+Time resolution is 1 ps
+Note: E_P should toggle according to minimal duty cycle
+Time: 420 ns  Iteration: 0  Process: /test_pwm/P_TEST  File: C:/Users/hdway/Documents/vivado/pwm/pwm.srcs/sim_1/imports/Downloads/test_pwm.vhd
+Note: E_P should toggle according to 25% duty cycle
+Time: 820 ns  Iteration: 0  Process: /test_pwm/P_TEST  File: C:/Users/hdway/Documents/vivado/pwm/pwm.srcs/sim_1/imports/Downloads/test_pwm.vhd

@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/hdway/Documents/vivado/pwm/pwm.sim/sim_1/impl/func/xsim/test_pwm_func_impl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pwm'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/hdway/Documents/vivado/pwm/pwm.srcs/sim_1/imports/Downloads/test_pwm.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'test_pwm'
